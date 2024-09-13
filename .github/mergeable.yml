@@ -13,6 +13,8 @@ mergeable:
     pass:
       - do: merge
         merge_method: "squash"
+        commit_title: '{{{ title }}} (#{{{ number }}})'
+        commit_message: '{{{ body }}}'
     fail:
       - do: checks
         status: 'failure'
