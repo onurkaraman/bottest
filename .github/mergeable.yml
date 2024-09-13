@@ -13,3 +13,5 @@ mergeable:
     pass:
       - do: merge
         merge_method: "squash"
+        commit_title: '{{{ title }}} (#{{{ number }}})' # Optional, override commit title
+        commit_message: '{{{ body }}}' # Optional, override commit message
