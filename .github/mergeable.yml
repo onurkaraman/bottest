@@ -1,6 +1,6 @@
 version: 2
 mergeable:
-  - when: 'pull_request.*', 'pull_request_review.*', 'status.*', 'check_suite.*'
+  - when: pull_request.*, pull_request_review.*, status.*, check_suite.*
     name: non-empty pr description
     validate:
       - do: description
@@ -10,5 +10,3 @@ mergeable:
     pass:
       - do: merge
         merge_method: "squash"
-        commit_title: '{{{ title }}} (#{{{ number }}})' # Optional, override commit title
-        commit_message: '{{{ body }}}' # Optional, override commit message
