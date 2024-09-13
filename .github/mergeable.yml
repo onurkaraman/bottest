@@ -1,6 +1,6 @@
 version: 2
 mergeable:
-  - when: pull_request.*
+  - when: 'pull_request.*', 'pull_request_review.*', 'status.*', 'check_suite.*'
     name: non-empty pr description
     validate:
       - do: description
