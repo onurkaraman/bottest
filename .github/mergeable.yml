@@ -10,3 +10,8 @@ mergeable:
     pass:
       - do: merge
         merge_method: "squash"
+    fail:
+      - do: checks
+        status: 'failure'
+        payload: 
+          title: "Cannot have empty pr description"
