@@ -1,12 +1,15 @@
 version: 2
 mergeable:
-  - when: pull_request.*, pull_request_review.*, status.*, check_suite.*
-    name: "Automatically merge pull requests once it passes all checks"
+  - when: pull_request.*
+    name: "Descriptions must not be empty"
     validate:
       - do: description
         no_empty:
           enabled: true
           message: Description matter and should not be empty. Provide detail with **what** was changed, **why** it was changed, and **how** it was changed.
+  - when: pull_request.*, pull_request_review.*, status.*, check_suite.*
+    name: "Automatically merge pull requests once it passes all checks"
+    validate: []
     pass:
       - do: merge
         merge_method: "squash"
@@ -14,4 +17,4 @@ mergeable:
       - do: checks
         status: 'failure'
         payload: 
-          title: "Cannot have empty pr description"
+          title: "Some checks failed"
