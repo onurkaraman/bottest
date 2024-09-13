@@ -1,7 +1,5 @@
 version: 2
 mergeable:
-  - when: pull_request.*
-    name: Automatically merge pull requests once it passes all checks
   - when: pull_request.*, pull_request_review.*, status.*, check_suite.*
     validate:
       - do: description
